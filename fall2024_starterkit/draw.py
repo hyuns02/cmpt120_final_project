@@ -1,4 +1,5 @@
-# Your header
+# Jackson Lee #301619913
+#Hyunso Jo #
 
 import cmpt120image
 cmpt120image.init()
