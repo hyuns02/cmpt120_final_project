@@ -1,5 +1,6 @@
 import cmpt120image
 from main import init_env, play_sound
+import draw
 
 def test_play_sound(env):
     play_sound("apples", env)
@@ -29,6 +30,32 @@ def test_get_white_image():
 
 ENV = init_env()
 
+def test_minify(img):
+    b = cmpt120image.get_image(img)
+    a = draw.minify(b)
+    c =  'copy_of_' + img[7:]
+    cmpt120image.save_image(a, c)
+    cmpt120image.show_image(b)
+    input("Press enter when done viewing image")
+    cmpt120image.show_image(a)
+    input("Press enter when done viewing image")
+
+def test_draw_item(canvas, item, row, col):
+    a = cmpt120image.get_image(canvas)
+    b = cmpt120image.get_image(item)
+    c = draw.draw_item(a, b, row, col)
+    d = 'draw_item_' + item[7:]
+    cmpt120image.save_image(c, d)
+    cmpt120image.show_image(c)
+    input("Press enter when done viewing image")
+
+def create_canvas():
+    canvas = cmpt120image.get_white_image(160, 160)
+    cmpt120image.save_image(canvas, "canvas.png")
+
+def get_image_size(img):
+    a = cmpt120image.get_image(img)
+    print(f'height: {len(a)}, width: {len(a[0])}')
 
 # ===
 # CODE TO TEST SOUNDS 
@@ -46,11 +73,30 @@ ENV = init_env()
 
 # Uncomment the below code to make sure you can get an image
 
-test_get_image()
-test_save_image()
-test_show_image()
+# test_get_image()
+# test_save_image()
+# test_show_image()
 
 # Uncomment the below code to make sure you generate "blank" black and white images
 
-test_get_black_image()
-test_get_white_image()
+# test_get_black_image()
+# test_get_white_image()
+
+
+
+# == Code to test minifiy(img) ==
+# You can test different images
+
+# test_minify("images/salt.png")
+
+
+# == Code to test draw_item(canvas, item, row, col) ==
+# Make sure that uncomment create_canvas function and try it first 
+# before testing draw_item
+# YOU NEED 'CANVAS IMAGE' FOR TESTING DRAW_ITEM
+
+# You can test different images and locations
+
+# create_canvas()
+
+test_draw_item('canvas.png', 'images/salt.png', 5, 5)
