@@ -1,14 +1,33 @@
 # Jackson Lee #301619913
 #Hyunso Jo #
 
-import cmpt120image
-cmpt120image.init()
+import cmpt120image as ci
+ci.init()
+
+def colour_check(pixcel):
+  r,g,b = pixcel
+  if r == 0 and g == 0 and b == 0:
+    return True
+  else:
+    return False
 
 
 # Note: delete all `return False` lines as you complete each function!
 def recolor_image(img, color):
-  # Add your code here
-  return False
+  height = len(img)
+  width = len(img[0])
+  child = ci.get_image("child.png")
+
+  for row in range(height):
+    for col in range(width):
+      pixcel_from_image = child[row][col]
+      if colour_check(pixcel_from_image):
+        child[row][col] == (0, 255, 0)
+  ci.show_image(child, "merged")
+  input("Please any key to end to process")
+
+
+  # return False
 
 def minify(img):
   # Get height and width of the img
@@ -29,7 +48,7 @@ def minify(img):
     result.append(list_of_pixel)
 
   # Create new image
-  result_image = cmpt120image.get_white_image(width//2,height//2)
+  result_image = ci.get_white_image(width//2,height//2)
   for row in range(height//2):
     for col in range(width//2):
       result_image[row][col] = result[row][col]
