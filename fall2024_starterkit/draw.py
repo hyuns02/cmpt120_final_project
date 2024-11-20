@@ -35,7 +35,7 @@ def minify(img):
   width = len(img[0])
   
   # Reduce both height and width
-  result = []
+  # result = []
   for row in range(0,height,2):
     list_of_pixel = []
     for col in range(0,width,2):
