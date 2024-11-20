@@ -33,12 +33,12 @@ def recolor_image(img, color):
 
 def minify(img):
   # Get height and width of the img and creat canvas
-  result = []
   height = len(img)
   width = len(img[0])
   result_image = ci.get_white_image(width//2,height//2)
   
   # Reduce both height and width
+  result = []
   for row in range(0,height,2):
     for col in range(0,width,2):
       list_of_rgb = []
