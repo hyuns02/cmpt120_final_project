@@ -33,7 +33,7 @@ ENV = init_env()
 def test_minify(img):
     b = cmpt120image.get_image(img)
     a = draw.minify(b)
-    c =  'copy_of_' + img[7:]
+    c =  'minified_' + img[7:]
     cmpt120image.save_image(a, c)
     cmpt120image.show_image(b)
     input("Press enter when done viewing image")
@@ -87,7 +87,7 @@ def get_image_size(img):
 # == Code to test minifiy(img) ==
 # You can test different images
 
-# test_minify("images/salt.png")
+# test_minify("images/child.png")
 
 
 # == Code to test draw_item(canvas, item, row, col) ==
@@ -98,5 +98,9 @@ def get_image_size(img):
 # You can test different images and locations
 
 # create_canvas()
+# test_draw_item('canvas.png', 'images/salt.png', 5, 5)
 
-test_draw_item('canvas.png', 'images/salt.png', 5, 5)
+
+#== Code to get size of the image ==
+
+# get_image_size('minified_child.png')
