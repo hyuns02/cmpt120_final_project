@@ -1,5 +1,9 @@
-# Jackson Lee #301619913
-#Hyunso Jo #
+# Image Processing Module
+# Jackson Lee(301619913)
+# Hyunsoo Cho(301625764)
+# 2024.11.22
+
+# This line has exactly 100 characters (including the period), use it to keep each line under limit.
 
 import cmpt120image
 cmpt120image.init()
