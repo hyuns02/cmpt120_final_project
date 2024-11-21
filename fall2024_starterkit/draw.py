@@ -49,7 +49,7 @@ def minify(img):
                    img[row+1][col][i] + img[row+1][col+1][i])/4)
         list_of_rgb.append(avg)
 
-  # Create new image
+  # Creating the new image
   result_image = ci.get_white_image(width//2,height//2)
   for row in range(height//2):
     for col in range(width//2):
@@ -62,7 +62,7 @@ def mirror(img):
   photo = ci.get_image(img)
 # mirroring the photo
   for row in range(height):
-    for col in range(height//2):
+    for col in range(width // 2):
       opposite_col = width - col - 1
       photo[row][col], photo[row][opposite_col] = photo[row][opposite_col], photo[row][col]
 
@@ -70,8 +70,7 @@ def mirror(img):
   result_img = ci.get_white_image()
   for row in range(height):
     for col in range(width):
-      opposite_col = width - col - 1
-      result_img[row][col] = result_img[row][opposite_col]
+      result_img[row][col] = photo[row][col]
   return result_img
 
 
