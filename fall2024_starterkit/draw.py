@@ -23,7 +23,16 @@ def recolor_image(img, color):
     for col in range(width):
       pixcel_from_image = photo[row][col]
       if colour_check(pixcel_from_image):
+<<<<<<< HEAD
         photo[row][col] = color
+=======
+        child[row][col] = color
+        ci.get_white_image
+  return child
+
+  # ci.show_image(child, "merged")
+  # input("Please any key to end to process")
+>>>>>>> ea0d240632a762669fc9561763749dde43973d5a
 
 # creating the new photo with changed colour
   result_img = ci.get_white_image()
@@ -34,26 +43,30 @@ def recolor_image(img, color):
   
 
 def minify(img):
-  # Get height and width of the img and creat canvas
-  height = len(img)
-  width = len(img[0])
-  result_image = ci.get_white_image(width//2,height//2)
+  # Get height and width of the img and create canvas
+  img_height = len(img)
+  img_width = len(img[0])
+  result_image = ci.get_white_image(img_width, img_height)
+
   
   # Reduce both height and width
-  result = []
-  for row in range(0,height,2):
-    for col in range(0,width,2):
+  for row in range(0,img_height,2):
+    for col in range(0,img_width,2):
       list_of_rgb = []
       for i in range(3):
         avg = int((img[row][col][i] + img[row][col+1][i] + 
                    img[row+1][col][i] + img[row+1][col+1][i])/4)
         list_of_rgb.append(avg)
+<<<<<<< HEAD
 
   # Creating the new image
   result_image = ci.get_white_image(width//2,height//2)
   for row in range(height//2):
     for col in range(width//2):
       result_image[row][col] = result[row][col]
+=======
+      result_image[row//2][col//2] = list_of_rgb
+>>>>>>> ea0d240632a762669fc9561763749dde43973d5a
   return result_image
 
 def mirror(img):
