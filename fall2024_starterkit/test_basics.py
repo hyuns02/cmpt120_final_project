@@ -49,13 +49,40 @@ def test_draw_item(canvas, item, row, col):
     cmpt120image.show_image(c)
     input("Press enter when done viewing image")
 
-def create_canvas():
-    canvas = cmpt120image.get_white_image(160, 160)
+def create_canvas(height=160, width=160):
+    canvas = cmpt120image.get_white_image(width, height)
     cmpt120image.save_image(canvas, "canvas.png")
 
 def get_image_size(img):
     a = cmpt120image.get_image(img)
     print(f'height: {len(a)}, width: {len(a[0])}')
+
+def test_mirror(img):
+    a = cmpt120image.get_image(img)
+    c = draw.mirror(a)
+    d = 'mirror_' + img[7:]
+    cmpt120image.save_image(c, d)
+    cmpt120image.show_image(a)
+    input("Press enter when done viewing image")
+    cmpt120image.show_image(c)
+    input("Press enter when done viewing image")
+
+def test_recolor(img, color):
+    b = cmpt120image.get_image(img)
+    a = draw.recolor_image(b, color)
+    c =  'recolor_' + img[7:]
+    cmpt120image.save_image(a, c)
+    cmpt120image.show_image(a)
+    input("Press enter when done viewing image")
+
+def test_distribute_items(canvas, item, n):
+    a = cmpt120image.get_image(canvas)
+    b = cmpt120image.get_image(item)
+    c = draw.distribute_items(a, b, n)
+    d = 'distri_items_' + item[7:]
+    cmpt120image.save_image(c, d)
+    cmpt120image.show_image(c)
+    input("Press enter when done viewing image")
 
 # ===
 # CODE TO TEST SOUNDS 
@@ -83,11 +110,18 @@ def get_image_size(img):
 # test_get_white_image()
 
 
+# == Code to test recolor(img, color) ==
+# test_recolor('images/oranges.png', (255,0,255))
+
 
 # == Code to test minifiy(img) ==
 # You can test different images
 
-# test_minify("images/child.png")
+# test_minify("images/tipi.png")
+
+
+# == Code to test mirror(img) ==
+# test_mirror('images/coffee.png')
 
 
 # == Code to test draw_item(canvas, item, row, col) ==
@@ -97,10 +131,13 @@ def get_image_size(img):
 
 # You can test different images and locations
 
-# create_canvas()
-# test_draw_item('canvas.png', 'images/salt.png', 5, 5)
+# create_canvas(320, 320)
+# test_draw_item('canvas.png', 'images/door.png', 60, 60)
+
+
+# == Code to test dritribute_items functions ==
+test_distribute_items('canvas.png', 'images/child.png', 4)
 
 
 #== Code to get size of the image ==
-
-# get_image_size('minified_child.png')
+# get_image_size('minified_tipi.png')
