@@ -37,9 +37,11 @@ def play_sound(soundfilename,env):
 
 
 
-file_name = ["apples", "bread", "burger", "child", "child", "coffee", "dog", "door", 
-                 "eggs", "fish", "oranges", "salt", "tipi"]
+with open('blackfoot.csv', 'r') as f:
+    names = [line.strip() for line in f]
+
 items_to_teach = 3
+
 print("MAIN MENU")
 for i in range(4):
     list = ["Learn", "Play", "Settings", "Quit"]
@@ -50,22 +52,22 @@ last_user_entry = input("\nChoose your option: ").strip().lower()
 while last_user_entry != "quit" and last_user_entry != "4":
     if last_user_entry == "1" or last_user_entry == "learn":
         print(f"\nLearning {items_to_teach} items!")
-        for _ in range(items_to_teach):
-            item = random.choice(file_name)
+
+        # Teach only `items_to_teach` words (in this case, the first 3)
+        for i in range(items_to_teach):
+            item = names[i]  # This will iterate through the first 3 words
             img = ci.get_image(f"images/{item}.png")
             sound = f"sounds/{item}.wav"
 
             canvas = ci.get_white_image(400, 400)
             draw.draw_item(canvas, img, random.randint(0, 300), random.randint(0, 300))
             ci.show_image(canvas)
-            pygame.mixer.music.load(sound)
-            pygame.mixer.music.play()
+            play_sound(sound)
 
             input("\nPress Enter to continue...")
 
+
         
-        #start implementing here
-        # run_learning_part()
     elif last_user_entry == "2" or "play":
         #implement the play code here
 
