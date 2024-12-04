@@ -6,8 +6,8 @@ def test_play_sound(env):
     play_sound("apples", env)
     input("Press enter to continue after sound has played. ")
 
-def test_get_image():
-    cmpt120image.get_image("images/apples.png")
+def test_get_image(img):
+    cmpt120image.get_image(img)
 
 def test_save_image():
     my_image = cmpt120image.get_image("images/apples.png")
