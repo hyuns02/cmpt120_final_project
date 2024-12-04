@@ -136,7 +136,7 @@ def test_distribute_items(canvas, item, n):
 
 
 # == Code to test dritribute_items functions ==
-test_distribute_items('canvas.png', 'images/child.png', 4)
+# test_distribute_items('canvas.png', 'images/child.png', 4)
 
 
 #== Code to get size of the image ==

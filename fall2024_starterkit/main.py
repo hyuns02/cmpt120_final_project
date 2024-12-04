@@ -12,13 +12,13 @@ import random
 
 
 def init_env():
-    print("\nWelcome! Before we start...")
+    # print("\nWelcome! Before we start...")
     # env = input("Are you using VS Code (v), Replit (r) or IDLE (i)? ").lower()
     # while env not in "vri":
     #     print("Environment not recognized, type again.")
     #     env = input("Are you using VS Code (V), Replit (r) or IDLE (i)? ").lower()
     env = "v"
-    print("Great! Have fun!\n")
+    # print("Great! Have fun!\n")
     return env
 
 # Use the play_sound() function below to play sounds. 
@@ -32,24 +32,25 @@ def play_sound(soundfilename,env):
     # elif env == "r":
     #     from replit import audio
     #     audio.play_file("sounds/"+soundfilename+".wav")
-#ENV = initEnv()
+ENV = init_env()
 ###############################################################
 
-
+last_user_entry = ''
 
 with open('blackfoot.csv', 'r') as f:
     names = [line.strip() for line in f]
 
 items_to_teach = 3
 
-print("MAIN MENU")
-for i in range(4):
-    list = ["Learn", "Play", "Settings", "Quit"]
-    print(f"{i+1}. {list[i]}")
-last_user_entry = input("\nChoose your option: ").strip().lower()
-
 
 while last_user_entry != "quit" and last_user_entry != "4":
+    
+    print("MAIN MENU")
+    for i in range(4):
+        list = ["Learn", "Play", "Settings", "Quit"]
+        print(f"{i+1}. {list[i]}")
+    last_user_entry = input("\nChoose your option: ").strip().lower()
+    
     if last_user_entry == "1" or last_user_entry == "learn":
         print(f"\nLearning {items_to_teach} items!")
 
@@ -57,14 +58,14 @@ while last_user_entry != "quit" and last_user_entry != "4":
         for i in range(items_to_teach):
             item = names[i]  # This will iterate through the first 3 words
             img = ci.get_image(f"images/{item}.png")
-            sound = f"sounds/{item}.wav"
+            sound = f"{item}"
 
             canvas = ci.get_white_image(400, 400)
-            draw.draw_item(canvas, img, random.randint(0, 300), random.randint(0, 300))
-            ci.show_image(canvas)
-            play_sound(sound)
+            learn_canvas = draw.distribute_items(canvas, img, 1)
+            ci.show_image(learn_canvas)
+            play_sound(sound,ENV)
 
-            input("\nPress Enter to continue...")
+            input("Press Enter to continue...")
 
 
         

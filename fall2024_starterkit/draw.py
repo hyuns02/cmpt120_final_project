@@ -81,7 +81,7 @@ def distribute_items(canvas, item, n):
   
   # Draw item n times on random location of canvas using draw item function
   for _ in range(n):
-    row = random.randint(0,canvas_height-item_height+1)
-    col = random.randint(0,canvas_width-item_width+1)
+    row = random.randint(0,canvas_height-item_height)
+    col = random.randint(0,canvas_width-item_width)
     draw_item(canvas, item, row, col)
   return canvas
