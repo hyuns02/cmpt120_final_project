@@ -1,6 +1,6 @@
 import cmpt120image
-from main import init_env, play_sound
-import draw
+from fall2024_starterkit.Cho_Lee import init_env, play_sound
+import fall2024_starterkit.draw1 as draw1
 
 def test_play_sound(env):
     play_sound("apples", env)
@@ -32,7 +32,7 @@ ENV = init_env()
 
 def test_minify(img):
     b = cmpt120image.get_image(img)
-    a = draw.minify(b)
+    a = draw1.minify(b)
     c =  'minified_' + img[7:]
     cmpt120image.save_image(a, c)
     cmpt120image.show_image(b)
@@ -43,7 +43,7 @@ def test_minify(img):
 def test_draw_item(canvas, item, row, col):
     a = cmpt120image.get_image(canvas)
     b = cmpt120image.get_image(item)
-    c = draw.draw_item(a, b, row, col)
+    c = draw1.draw_item(a, b, row, col)
     d = 'draw_item_' + item[7:]
     cmpt120image.save_image(c, d)
     cmpt120image.show_image(c)
@@ -59,7 +59,7 @@ def get_image_size(img):
 
 def test_mirror(img):
     a = cmpt120image.get_image(img)
-    c = draw.mirror(a)
+    c = draw1.mirror(a)
     d = 'mirror_' + img[7:]
     cmpt120image.save_image(c, d)
     cmpt120image.show_image(a)
@@ -69,7 +69,7 @@ def test_mirror(img):
 
 def test_recolor(img, color):
     b = cmpt120image.get_image(img)
-    a = draw.recolor_image(b, color)
+    a = draw1.recolor_image(b, color)
     c =  'recolor_' + img[7:]
     cmpt120image.save_image(a, c)
     cmpt120image.show_image(a)
@@ -78,7 +78,7 @@ def test_recolor(img, color):
 def test_distribute_items(canvas, item, n):
     a = cmpt120image.get_image(canvas)
     b = cmpt120image.get_image(item)
-    c = draw.distribute_items(a, b, n)
+    c = draw1.distribute_items(a, b, n)
     d = 'distri_items_' + item[7:]
     cmpt120image.save_image(c, d)
     cmpt120image.show_image(c)
